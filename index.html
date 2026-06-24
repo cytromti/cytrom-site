@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,8 +10,6 @@
 <meta name="author" content="Cytrom TI">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/png" href="favicon.png">
-
-  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
@@ -29,8 +28,21 @@ overflow-x:hidden;
 -webkit-font-smoothing:antialiased;
 }
 
+.cursor-glow{
+position:fixed;
+width:250px;
+height:250px;
+background:radial-gradient(circle, rgba(30,144,255,0.25), transparent 70%);
+border-radius:50%;
+pointer-events:none;
+transform:translate(-50%, -50%);
+z-index:0;
+transition:transform .08s linear;
+}
+
 header{
 position:fixed;
+transition:transform .4s ease;
 top:0;
 width:100%;
 padding:20px 50px;
@@ -76,6 +88,8 @@ flex-direction:column;
 text-align:center;
 background:radial-gradient(circle,#102040,#05070f);
 padding:20px;
+position:relative;
+z-index:2;
 }
 
 .hero h1{
@@ -126,6 +140,8 @@ transform:translateY(-5px);
 
 section{
 padding:100px 50px;
+position:relative;
+z-index:2;
 }
 
 .title{
@@ -244,6 +260,8 @@ footer{
 padding:40px;
 text-align:center;
 background:#0b0f1c;
+position:relative;
+z-index:2;
 }
 
 @keyframes fadeUp{
@@ -262,9 +280,7 @@ to{opacity:1;transform:translateY(0);}
 100%{transform:scale(1);}
 }
 
-/* RESPONSIVO */
 @media(max-width:768px){
-
 header{
 flex-direction:column;
 padding:15px 20px;
@@ -356,28 +372,16 @@ padding:20px;
 width:100%;
 }
 
-input, select, textarea{
-font-size:16px;
-}
-
 button{
 width:100%;
 }
-
-.socials{
-gap:20px;
-}
-
-footer{
-padding:30px 20px;
-font-size:14px;
-}
-
 }
 </style>
 </head>
 
 <body>
+
+<div class="cursor-glow"></div>
 
 <header>
 <div class="logo">
@@ -394,9 +398,7 @@ font-size:14px;
 
 <section class="hero">
 <h1>Sua empresa precisa de <span>estrutura, segurança e suporte profissional.</span></h1>
-<p>
-A Cytrom TI entrega gestão, suporte e monitoramento inteligente para empresas.
-</p>
+<p>A Cytrom TI entrega gestão, suporte e monitoramento inteligente para empresas.</p>
 
 <div class="buttons">
 <a class="primary" href="#orcamento">Solicitar Orçamento</a>
@@ -434,10 +436,13 @@ A Cytrom TI entrega gestão, suporte e monitoramento inteligente para empresas.
 <div class="form-box">
 <form action="https://api.web3forms.com/submit" method="POST">
 
-<input type="hidden" name="access_key" value="15c5adc3-6729-4683-91e8-08c0e7befbaf"
+<input type="hidden" name="access_key" value="48406ac7-bac4-4a50-828d-bde649a17de8">
 <input type="hidden" name="subject" value="Novo orçamento - Cytrom TI">
 <input type="hidden" name="from_name" value="Site Cytrom TI">
+<input type="hidden" name="replyto" value="contato.cytrom@gmail.com">
 <input type="hidden" name="redirect" value="https://cytrom.com.br/obrigado.html">
+
+<input type="hidden" name="botcheck" style="display:none;">
 
 <input type="text" name="nome" placeholder="Seu nome" required>
 <input type="text" name="empresa" placeholder="Empresa">
@@ -477,7 +482,14 @@ A Cytrom TI entrega gestão, suporte e monitoramento inteligente para empresas.
 </footer>
 
 <script>
-const cards=document.querySelectorAll('.card');
+const glow = document.querySelector('.cursor-glow');
+
+document.addEventListener('mousemove', (e) => {
+glow.style.left = e.clientX + 'px';
+glow.style.top = e.clientY + 'px';
+});
+
+const cards = document.querySelectorAll('.card');
 
 window.addEventListener('scroll',()=>{
 cards.forEach(card=>{
@@ -487,7 +499,23 @@ card.classList.add('show');
 }
 });
 });
+
+let lastScroll = 0;
+const header = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+let currentScroll = window.pageYOffset;
+
+if(currentScroll > lastScroll){
+header.style.transform = 'translateY(-100%)';
+}else{
+header.style.transform = 'translateY(0)';
+}
+
+lastScroll = currentScroll;
+});
 </script>
 
 </body>
 </html>
+```
