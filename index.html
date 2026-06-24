@@ -17,22 +17,21 @@ scroll-behavior:smooth;
 
 body{
 background:#05070f;
-color:#fff;
+color:white;
 overflow-x:hidden;
 }
 
 header{
 position:fixed;
-width:100%;
 top:0;
+width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 50px;
-background:rgba(5,7,15,.7);
-backdrop-filter:blur(15px);
+background:rgba(5,7,15,.85);
+backdrop-filter:blur(12px);
 z-index:999;
-border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 .logo{
@@ -48,14 +47,10 @@ border-radius:50%;
 box-shadow:0 0 20px #1e90ff;
 }
 
-.logo h2{
-color:#1e90ff;
-}
-
 nav a{
 text-decoration:none;
 color:white;
-margin-left:25px;
+margin-left:20px;
 font-weight:600;
 transition:.3s;
 }
@@ -67,31 +62,35 @@ color:#1e90ff;
 .hero{
 height:100vh;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
+flex-direction:column;
 text-align:center;
 padding:20px;
 background:
 radial-gradient(circle at center,#102040 0%,#05070f 70%);
+animation:fadeUp 1s ease;
 }
 
 .hero h1{
 font-size:60px;
 max-width:900px;
 line-height:1.2;
-margin-bottom:20px;
 }
 
-.hero h1 span{
+.hero span{
 color:#1e90ff;
 }
 
 .hero p{
-font-size:20px;
+margin-top:20px;
 max-width:700px;
-opacity:.85;
-margin-bottom:35px;
+font-size:20px;
+opacity:.9;
+}
+
+.buttons{
+margin-top:30px;
 }
 
 .buttons a{
@@ -115,7 +114,7 @@ color:#1e90ff;
 }
 
 .buttons a:hover{
-transform:translateY(-4px);
+transform:translateY(-5px);
 }
 
 section{
@@ -130,8 +129,8 @@ margin-bottom:50px;
 
 .cards{
 display:flex;
-justify-content:center;
 flex-wrap:wrap;
+justify-content:center;
 gap:25px;
 }
 
@@ -139,9 +138,16 @@ gap:25px;
 background:#0d1323;
 padding:30px;
 width:300px;
-border-radius:16px;
+border-radius:15px;
 transition:.4s;
 border:1px solid rgba(255,255,255,.05);
+opacity:0;
+transform:translateY(40px);
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
 }
 
 .card:hover{
@@ -158,7 +164,7 @@ margin-bottom:15px;
 .metrics{
 display:flex;
 justify-content:center;
-gap:50px;
+gap:60px;
 flex-wrap:wrap;
 text-align:center;
 }
@@ -168,53 +174,78 @@ font-size:42px;
 color:#1e90ff;
 }
 
-.about{
-max-width:900px;
-margin:auto;
-text-align:center;
-line-height:1.8;
-font-size:18px;
-opacity:.9;
+.status-grid{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
 }
 
-.cta{
-text-align:center;
+.status{
 background:#0d1323;
-padding:80px 30px;
-border-radius:20px;
+padding:20px;
+border-radius:12px;
+width:250px;
+}
+
+.online{
+color:#25d366;
+font-weight:bold;
+}
+
+.form-box{
+max-width:700px;
+margin:auto;
+background:#0d1323;
+padding:30px;
+border-radius:15px;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input, select, textarea{
+padding:15px;
+border:none;
+border-radius:8px;
+background:#111827;
+color:white;
+}
+
+button{
+padding:15px;
+background:#1e90ff;
+border:none;
+color:white;
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
 }
 
 footer{
 padding:40px;
 text-align:center;
 background:#0b0f1c;
-border-top:1px solid rgba(255,255,255,.05);
 }
 
-footer p{
-margin:8px 0;
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
 }
-
-.whatsapp{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#25d366;
-padding:16px;
-border-radius:50%;
-font-size:26px;
-text-decoration:none;
-box-shadow:0 0 20px rgba(37,211,102,.4);
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 @media(max-width:768px){
 header{
-padding:20px;
 flex-direction:column;
-}
-
-nav{
-margin-top:15px;
+padding:20px;
 }
 
 .hero h1{
@@ -228,6 +259,7 @@ align-items:center;
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -237,31 +269,22 @@ align-items:center;
 </div>
 
 <nav>
-<a href="#sobre">Sobre</a>
 <a href="#servicos">Serviços</a>
-<a href="#clientes">Clientes</a>
+<a href="#status">Status</a>
+<a href="#orcamento">Orçamento</a>
 <a href="#contato">Contato</a>
 </nav>
 </header>
 
 <section class="hero">
-<h1>Sua empresa precisa de <span>estabilidade em TI</span>, não de problemas.</h1>
+<h1>Transformamos sua <span>TI em estrutura, segurança e resultado.</span></h1>
 <p>
-A Cytrom TI entrega suporte técnico, monitoramento, segurança e gestão completa de infraestrutura para empresas.
+Suporte, monitoramento, inventário, service desk e gestão inteligente para empresas.
 </p>
 
 <div class="buttons">
-<a class="primary" href="https://glpi.cytrom.com.br">Abrir Chamado</a>
-<a class="secondary" href="https://remote.cytrom.com.br">Suporte Remoto</a>
-<a class="primary" href="https://wa.me/5511962753749">Fale Conosco</a>
-</div>
-</section>
-
-<section id="sobre">
-<h2 class="title">Quem Somos</h2>
-<div class="about">
-A Cytrom TI nasceu com o propósito de profissionalizar a gestão de TI para pequenas e médias empresas,
-oferecendo suporte, organização, segurança e monitoramento com padrão corporativo.
+<a class="primary" href="https://wa.me/5511962753749">Solicitar Atendimento</a>
+<a class="secondary" href="#orcamento">Solicitar Orçamento</a>
 </div>
 </section>
 
@@ -285,52 +308,63 @@ oferecendo suporte, organização, segurança e monitoramento com padrão corpor
 </section>
 
 <section id="servicos">
-<h2 class="title">Nossos Serviços</h2>
+<h2 class="title">Nossas Soluções</h2>
 
 <div class="cards">
 
-<div class="card">
-<h3>Suporte Técnico</h3>
-<p>Atendimento remoto e presencial especializado.</p>
-</div>
-
-<div class="card">
-<h3>Infraestrutura</h3>
-<p>Redes, servidores, organização e escalabilidade.</p>
-</div>
-
-<div class="card">
-<h3>Inventário GLPI</h3>
-<p>Gestão completa de ativos, chamados e processos.</p>
-</div>
-
-<div class="card">
-<h3>Monitoramento</h3>
-<p>Prevenção de falhas e visibilidade da operação.</p>
-</div>
-
-<div class="card">
-<h3>Segurança</h3>
-<p>Boas práticas, hardening e proteção do ambiente.</p>
-</div>
-
-<div class="card">
-<h3>Consultoria</h3>
-<p>Soluções estratégicas para evolução tecnológica.</p>
-</div>
+<div class="card"><h3>Gestão de TI</h3><p>Administração completa do ambiente tecnológico.</p></div>
+<div class="card"><h3>Suporte Técnico</h3><p>Atendimento remoto e presencial.</p></div>
+<div class="card"><h3>Service Desk</h3><p>Portal GLPI para chamados e organização.</p></div>
+<div class="card"><h3>Suporte Remoto</h3><p>Acesso técnico rápido e seguro.</p></div>
+<div class="card"><h3>Monitoramento</h3><p>Visibilidade total da infraestrutura.</p></div>
+<div class="card"><h3>Inventário</h3><p>Controle de ativos e equipamentos.</p></div>
+<div class="card"><h3>Segurança</h3><p>Proteção e boas práticas.</p></div>
+<div class="card"><h3>Backup</h3><p>Proteção e recuperação de dados.</p></div>
+<div class="card"><h3>Infraestrutura</h3><p>Redes, servidores e organização.</p></div>
+<div class="card"><h3>Consultoria</h3><p>Planejamento estratégico em TI.</p></div>
 
 </div>
 </section>
 
-<section id="clientes">
-<div class="cta">
-<h2>Área do Cliente</h2>
-<p style="margin:20px 0;">Acesse seus serviços de forma rápida.</p>
+<section id="status">
+<h2 class="title">Status da Plataforma</h2>
 
-<div class="buttons">
-<a class="primary" href="https://glpi.cytrom.com.br">Portal GLPI</a>
-<a class="secondary" href="https://remote.cytrom.com.br">Acesso Remoto</a>
+<div class="status-grid">
+<div class="status">Portal GLPI — <span class="online">Operacional</span></div>
+<div class="status">Suporte Remoto — <span class="online">Operacional</span></div>
+<div class="status">Monitoramento — <span class="online">Ativo</span></div>
+<div class="status">Backup — <span class="online">Ativo</span></div>
 </div>
+</section>
+
+<section id="orcamento">
+<h2 class="title">Solicite um Orçamento</h2>
+
+<div class="form-box">
+<form action="mailto:contato.cytrom@gmail.com" method="post" enctype="text/plain">
+
+<input type="text" placeholder="Nome" required>
+<input type="text" placeholder="Empresa" required>
+<input type="tel" placeholder="Telefone" required>
+<input type="email" placeholder="Email" required>
+
+<select required>
+<option>Selecione o serviço</option>
+<option>Gestão de TI</option>
+<option>Suporte Técnico</option>
+<option>Monitoramento</option>
+<option>Inventário</option>
+<option>Segurança</option>
+<option>Backup</option>
+<option>Infraestrutura</option>
+<option>Consultoria</option>
+</select>
+
+<input type="number" placeholder="Quantidade de máquinas">
+<textarea rows="5" placeholder="Descreva sua necessidade"></textarea>
+
+<button type="submit">Solicitar Orçamento</button>
+</form>
 </div>
 </section>
 
@@ -341,7 +375,18 @@ oferecendo suporte, organização, segurança e monitoramento com padrão corpor
 <p>© 2026 Cytrom TI — Gestão e Suporte de TI</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/5511962753749">💬</a>
+<script>
+const cards = document.querySelectorAll('.card');
+
+window.addEventListener('scroll', () => {
+cards.forEach(card => {
+const top = card.getBoundingClientRect().top;
+if(top < window.innerHeight - 50){
+card.classList.add('show');
+}
+});
+});
+</script>
 
 </body>
 </html>
