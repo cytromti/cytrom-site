@@ -4,31 +4,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cytrom TI | Gestão e Suporte de TI</title>
+<title>Cytrom TI | Gestão Inteligente de TI</title>
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Segoe UI',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-background:#050b18;
-color:white;
+background:#05070f;
+color:#fff;
+overflow-x:hidden;
 }
 
 header{
+position:fixed;
+width:100%;
+top:0;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 50px;
-background:#0b1325;
-position:fixed;
-width:100%;
-top:0;
-z-index:1000;
+background:rgba(5,7,15,.7);
+backdrop-filter:blur(15px);
+z-index:999;
+border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 .logo{
@@ -38,16 +42,26 @@ gap:15px;
 }
 
 .logo img{
-width:50px;
-height:50px;
+width:55px;
+height:55px;
 border-radius:50%;
+box-shadow:0 0 20px #1e90ff;
+}
+
+.logo h2{
+color:#1e90ff;
 }
 
 nav a{
-color:white;
 text-decoration:none;
-margin-left:20px;
-font-weight:bold;
+color:white;
+margin-left:25px;
+font-weight:600;
+transition:.3s;
+}
+
+nav a:hover{
+color:#1e90ff;
 }
 
 .hero{
@@ -58,99 +72,162 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:20px;
-background:linear-gradient(to bottom,#050b18,#0b1325);
+background:
+radial-gradient(circle at center,#102040 0%,#05070f 70%);
 }
 
 .hero h1{
-font-size:48px;
-color:#1e90ff;
+font-size:60px;
+max-width:900px;
+line-height:1.2;
 margin-bottom:20px;
+}
+
+.hero h1 span{
+color:#1e90ff;
 }
 
 .hero p{
 font-size:20px;
 max-width:700px;
-margin-bottom:30px;
+opacity:.85;
+margin-bottom:35px;
 }
 
 .buttons a{
 display:inline-block;
-padding:15px 25px;
+padding:15px 28px;
 margin:10px;
-background:#1e90ff;
-color:white;
+border-radius:10px;
 text-decoration:none;
-border-radius:8px;
+font-weight:bold;
 transition:.3s;
 }
 
+.primary{
+background:#1e90ff;
+color:white;
+}
+
+.secondary{
+border:1px solid #1e90ff;
+color:#1e90ff;
+}
+
 .buttons a:hover{
-transform:scale(1.05);
+transform:translateY(-4px);
 }
 
 section{
-padding:80px 40px;
+padding:100px 50px;
+}
+
+.title{
 text-align:center;
+font-size:36px;
+margin-bottom:50px;
 }
 
 .cards{
 display:flex;
-flex-wrap:wrap;
 justify-content:center;
-gap:20px;
-margin-top:30px;
+flex-wrap:wrap;
+gap:25px;
 }
 
 .card{
-background:#0b1325;
-padding:25px;
-border-radius:12px;
-width:280px;
+background:#0d1323;
+padding:30px;
+width:300px;
+border-radius:16px;
+transition:.4s;
+border:1px solid rgba(255,255,255,.05);
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:#1e90ff;
+box-shadow:0 0 30px rgba(30,144,255,.2);
 }
 
 .card h3{
+color:#1e90ff;
 margin-bottom:15px;
+}
+
+.metrics{
+display:flex;
+justify-content:center;
+gap:50px;
+flex-wrap:wrap;
+text-align:center;
+}
+
+.metric h2{
+font-size:42px;
 color:#1e90ff;
 }
 
 .about{
-max-width:800px;
+max-width:900px;
 margin:auto;
+text-align:center;
 line-height:1.8;
+font-size:18px;
+opacity:.9;
+}
+
+.cta{
+text-align:center;
+background:#0d1323;
+padding:80px 30px;
+border-radius:20px;
 }
 
 footer{
-background:#0b1325;
-padding:30px;
+padding:40px;
 text-align:center;
+background:#0b0f1c;
+border-top:1px solid rgba(255,255,255,.05);
 }
 
-.whatsapp-float{
+footer p{
+margin:8px 0;
+}
+
+.whatsapp{
 position:fixed;
-bottom:20px;
-right:20px;
+bottom:25px;
+right:25px;
 background:#25d366;
-padding:15px;
+padding:16px;
 border-radius:50%;
+font-size:26px;
 text-decoration:none;
-font-size:24px;
+box-shadow:0 0 20px rgba(37,211,102,.4);
 }
 
 @media(max-width:768px){
 header{
-flex-direction:column;
 padding:20px;
+flex-direction:column;
 }
+
 nav{
-margin-top:10px;
+margin-top:15px;
 }
+
 .hero h1{
-font-size:32px;
+font-size:36px;
+}
+
+.cards{
+flex-direction:column;
+align-items:center;
 }
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -162,87 +239,109 @@ font-size:32px;
 <nav>
 <a href="#sobre">Sobre</a>
 <a href="#servicos">Serviços</a>
-<a href="#cliente">Área do Cliente</a>
+<a href="#clientes">Clientes</a>
 <a href="#contato">Contato</a>
 </nav>
 </header>
 
 <section class="hero">
-<h1>Gestão Inteligente de TI</h1>
+<h1>Sua empresa precisa de <span>estabilidade em TI</span>, não de problemas.</h1>
 <p>
-Suporte, monitoramento, inventário e segurança para empresas
-que precisam de estabilidade, organização e alta disponibilidade.
+A Cytrom TI entrega suporte técnico, monitoramento, segurança e gestão completa de infraestrutura para empresas.
 </p>
 
 <div class="buttons">
-<a href="https://glpi.cytrom.com.br">Abrir Chamado</a>
-<a href="https://remote.cytrom.com.br">Suporte Remoto</a>
-<a href="https://wa.me/5511962753749">WhatsApp</a>
+<a class="primary" href="https://glpi.cytrom.com.br">Abrir Chamado</a>
+<a class="secondary" href="https://remote.cytrom.com.br">Suporte Remoto</a>
+<a class="primary" href="https://wa.me/5511962753749">Fale Conosco</a>
 </div>
 </section>
 
 <section id="sobre">
-<h2>Quem Somos</h2>
+<h2 class="title">Quem Somos</h2>
 <div class="about">
-A Cytrom TI é especializada em gestão, suporte e monitoramento de ambientes corporativos.
-Nosso objetivo é entregar estabilidade, segurança e eficiência para empresas que dependem da tecnologia no dia a dia.
+A Cytrom TI nasceu com o propósito de profissionalizar a gestão de TI para pequenas e médias empresas,
+oferecendo suporte, organização, segurança e monitoramento com padrão corporativo.
+</div>
+</section>
+
+<section>
+<div class="metrics">
+<div class="metric">
+<h2>24/7</h2>
+<p>Monitoramento</p>
+</div>
+
+<div class="metric">
+<h2>100%</h2>
+<p>Gestão Centralizada</p>
+</div>
+
+<div class="metric">
+<h2>+99%</h2>
+<p>Disponibilidade</p>
+</div>
 </div>
 </section>
 
 <section id="servicos">
-<h2>Nossos Serviços</h2>
+<h2 class="title">Nossos Serviços</h2>
 
 <div class="cards">
 
 <div class="card">
 <h3>Suporte Técnico</h3>
-<p>Atendimento remoto e presencial.</p>
-</div>
-
-<div class="card">
-<h3>Monitoramento</h3>
-<p>Prevenção e acompanhamento de falhas.</p>
-</div>
-
-<div class="card">
-<h3>Inventário GLPI</h3>
-<p>Controle completo de ativos e chamados.</p>
+<p>Atendimento remoto e presencial especializado.</p>
 </div>
 
 <div class="card">
 <h3>Infraestrutura</h3>
-<p>Redes, servidores e organização de ambiente.</p>
+<p>Redes, servidores, organização e escalabilidade.</p>
+</div>
+
+<div class="card">
+<h3>Inventário GLPI</h3>
+<p>Gestão completa de ativos, chamados e processos.</p>
+</div>
+
+<div class="card">
+<h3>Monitoramento</h3>
+<p>Prevenção de falhas e visibilidade da operação.</p>
 </div>
 
 <div class="card">
 <h3>Segurança</h3>
-<p>Proteção e boas práticas em TI.</p>
+<p>Boas práticas, hardening e proteção do ambiente.</p>
 </div>
 
 <div class="card">
 <h3>Consultoria</h3>
-<p>Soluções estratégicas para crescimento.</p>
+<p>Soluções estratégicas para evolução tecnológica.</p>
 </div>
 
 </div>
 </section>
 
-<section id="cliente">
+<section id="clientes">
+<div class="cta">
 <h2>Área do Cliente</h2>
+<p style="margin:20px 0;">Acesse seus serviços de forma rápida.</p>
+
 <div class="buttons">
-<a href="https://glpi.cytrom.com.br">Portal GLPI</a>
-<a href="https://remote.cytrom.com.br">Acesso Remoto</a>
+<a class="primary" href="https://glpi.cytrom.com.br">Portal GLPI</a>
+<a class="secondary" href="https://remote.cytrom.com.br">Acesso Remoto</a>
+</div>
 </div>
 </section>
 
 <footer id="contato">
-<p>WhatsApp: (11) 96275-3749</p>
-<p>Email: contato.cytrom@gmail.com</p>
-<p>Instagram: @cytrom_ti</p>
-<p>© 2026 Cytrom TI - Todos os direitos reservados</p>
+<p>📞 (11) 96275-3749</p>
+<p>✉ contato.cytrom@gmail.com</p>
+<p>📷 @cytrom_ti</p>
+<p>© 2026 Cytrom TI — Gestão e Suporte de TI</p>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/5511962753749">💬</a>
+<a class="whatsapp" href="https://wa.me/5511962753749">💬</a>
 
 </body>
 </html>
