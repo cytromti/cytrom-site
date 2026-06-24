@@ -1,23 +1,30 @@
 ```html
+<!-- IMPORTANTE:
+Troque SEUEMAILAQUI pelo seu email:
+contato.cytrom@gmail.com
+-->
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cytrom TI | Gestão Inteligente de TI</title>
+<title>Cytrom TI</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+font-family:Segoe UI,sans-serif;
 scroll-behavior:smooth;
 }
 
 body{
 background:#05070f;
-color:white;
+color:#fff;
 overflow-x:hidden;
 }
 
@@ -25,13 +32,14 @@ header{
 position:fixed;
 top:0;
 width:100%;
+padding:20px 50px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 50px;
 background:rgba(5,7,15,.85);
-backdrop-filter:blur(12px);
+backdrop-filter:blur(15px);
 z-index:999;
+animation:fadeDown 1s;
 }
 
 .logo{
@@ -42,16 +50,14 @@ gap:15px;
 
 .logo img{
 width:55px;
-height:55px;
 border-radius:50%;
-box-shadow:0 0 20px #1e90ff;
+animation:pulse 2s infinite;
 }
 
 nav a{
-text-decoration:none;
 color:white;
+text-decoration:none;
 margin-left:20px;
-font-weight:600;
 transition:.3s;
 }
 
@@ -66,16 +72,14 @@ justify-content:center;
 align-items:center;
 flex-direction:column;
 text-align:center;
+background:radial-gradient(circle,#102040,#05070f);
 padding:20px;
-background:
-radial-gradient(circle at center,#102040 0%,#05070f 70%);
-animation:fadeUp 1s ease;
 }
 
 .hero h1{
 font-size:60px;
 max-width:900px;
-line-height:1.2;
+animation:fadeUp 1s;
 }
 
 .hero span{
@@ -84,9 +88,10 @@ color:#1e90ff;
 
 .hero p{
 margin-top:20px;
-max-width:700px;
 font-size:20px;
+max-width:700px;
 opacity:.9;
+animation:fadeUp 1.5s;
 }
 
 .buttons{
@@ -94,9 +99,9 @@ margin-top:30px;
 }
 
 .buttons a{
-display:inline-block;
-padding:15px 28px;
+padding:15px 25px;
 margin:10px;
+display:inline-block;
 border-radius:10px;
 text-decoration:none;
 font-weight:bold;
@@ -123,7 +128,7 @@ padding:100px 50px;
 
 .title{
 text-align:center;
-font-size:36px;
+font-size:35px;
 margin-bottom:50px;
 }
 
@@ -139,10 +144,9 @@ background:#0d1323;
 padding:30px;
 width:300px;
 border-radius:15px;
-transition:.4s;
-border:1px solid rgba(255,255,255,.05);
 opacity:0;
 transform:translateY(40px);
+transition:.5s;
 }
 
 .card.show{
@@ -152,45 +156,25 @@ transform:translateY(0);
 
 .card:hover{
 transform:translateY(-8px);
-border-color:#1e90ff;
-box-shadow:0 0 30px rgba(30,144,255,.2);
-}
-
-.card h3{
-color:#1e90ff;
-margin-bottom:15px;
-}
-
-.metrics{
-display:flex;
-justify-content:center;
-gap:60px;
-flex-wrap:wrap;
-text-align:center;
-}
-
-.metric h2{
-font-size:42px;
-color:#1e90ff;
-}
-
-.status-grid{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:20px;
+box-shadow:0 0 25px rgba(30,144,255,.25);
 }
 
 .status{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.status div{
 background:#0d1323;
 padding:20px;
 border-radius:12px;
-width:250px;
 }
 
 .online{
 color:#25d366;
-font-weight:bold;
+animation:pulse 2s infinite;
 }
 
 .form-box{
@@ -209,20 +193,49 @@ gap:15px;
 
 input, select, textarea{
 padding:15px;
+background:#111827;
 border:none;
 border-radius:8px;
-background:#111827;
 color:white;
+transition:.3s;
+}
+
+input:focus, select:focus, textarea:focus{
+outline:none;
+box-shadow:0 0 10px #1e90ff;
 }
 
 button{
 padding:15px;
 background:#1e90ff;
 border:none;
+border-radius:8px;
 color:white;
 font-weight:bold;
-border-radius:8px;
 cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.03);
+}
+
+.socials{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:20px;
+}
+
+.socials a{
+font-size:30px;
+color:white;
+transition:.3s;
+}
+
+.socials a:hover{
+transform:translateY(-5px);
+color:#1e90ff;
 }
 
 footer{
@@ -232,30 +245,19 @@ background:#0b0f1c;
 }
 
 @keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
 }
 
-@media(max-width:768px){
-header{
-flex-direction:column;
-padding:20px;
+@keyframes fadeDown{
+from{opacity:0;transform:translateY(-30px);}
+to{opacity:1;transform:translateY(0);}
 }
 
-.hero h1{
-font-size:36px;
-}
-
-.cards{
-flex-direction:column;
-align-items:center;
-}
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
 }
 </style>
 </head>
@@ -264,7 +266,7 @@ align-items:center;
 
 <header>
 <div class="logo">
-<img src="logo.png" alt="Cytrom TI">
+<img src="logo.png">
 <h2>Cytrom TI</h2>
 </div>
 
@@ -272,84 +274,58 @@ align-items:center;
 <a href="#servicos">Serviços</a>
 <a href="#status">Status</a>
 <a href="#orcamento">Orçamento</a>
-<a href="#contato">Contato</a>
 </nav>
 </header>
 
 <section class="hero">
-<h1>Transformamos sua <span>TI em estrutura, segurança e resultado.</span></h1>
+<h1>Sua empresa precisa de <span>estrutura, segurança e suporte profissional.</span></h1>
 <p>
-Suporte, monitoramento, inventário, service desk e gestão inteligente para empresas.
+A Cytrom TI entrega gestão, suporte e monitoramento inteligente para empresas.
 </p>
 
 <div class="buttons">
-<a class="primary" href="https://wa.me/5511962753749">Solicitar Atendimento</a>
-<a class="secondary" href="#orcamento">Solicitar Orçamento</a>
-</div>
-</section>
-
-<section>
-<div class="metrics">
-<div class="metric">
-<h2>24/7</h2>
-<p>Monitoramento</p>
-</div>
-
-<div class="metric">
-<h2>100%</h2>
-<p>Gestão Centralizada</p>
-</div>
-
-<div class="metric">
-<h2>+99%</h2>
-<p>Disponibilidade</p>
-</div>
+<a class="primary" href="#orcamento">Solicitar Orçamento</a>
+<a class="secondary" href="https://wa.me/5511962753749">Fale Conosco</a>
 </div>
 </section>
 
 <section id="servicos">
 <h2 class="title">Nossas Soluções</h2>
-
 <div class="cards">
-
-<div class="card"><h3>Gestão de TI</h3><p>Administração completa do ambiente tecnológico.</p></div>
-<div class="card"><h3>Suporte Técnico</h3><p>Atendimento remoto e presencial.</p></div>
-<div class="card"><h3>Service Desk</h3><p>Portal GLPI para chamados e organização.</p></div>
-<div class="card"><h3>Suporte Remoto</h3><p>Acesso técnico rápido e seguro.</p></div>
-<div class="card"><h3>Monitoramento</h3><p>Visibilidade total da infraestrutura.</p></div>
-<div class="card"><h3>Inventário</h3><p>Controle de ativos e equipamentos.</p></div>
-<div class="card"><h3>Segurança</h3><p>Proteção e boas práticas.</p></div>
-<div class="card"><h3>Backup</h3><p>Proteção e recuperação de dados.</p></div>
-<div class="card"><h3>Infraestrutura</h3><p>Redes, servidores e organização.</p></div>
-<div class="card"><h3>Consultoria</h3><p>Planejamento estratégico em TI.</p></div>
-
+<div class="card"><h3>Gestão de TI</h3></div>
+<div class="card"><h3>Service Desk</h3></div>
+<div class="card"><h3>Suporte Remoto</h3></div>
+<div class="card"><h3>Monitoramento</h3></div>
+<div class="card"><h3>Inventário</h3></div>
+<div class="card"><h3>Segurança</h3></div>
+<div class="card"><h3>Backup</h3></div>
+<div class="card"><h3>Infraestrutura</h3></div>
+<div class="card"><h3>Consultoria</h3></div>
 </div>
 </section>
 
 <section id="status">
 <h2 class="title">Status da Plataforma</h2>
-
-<div class="status-grid">
-<div class="status">Portal GLPI — <span class="online">Operacional</span></div>
-<div class="status">Suporte Remoto — <span class="online">Operacional</span></div>
-<div class="status">Monitoramento — <span class="online">Ativo</span></div>
-<div class="status">Backup — <span class="online">Ativo</span></div>
+<div class="status">
+<div>GLPI — <span class="online">Operacional</span></div>
+<div>Remote — <span class="online">Operacional</span></div>
+<div>Monitoramento — <span class="online">Ativo</span></div>
 </div>
 </section>
 
 <section id="orcamento">
-<h2 class="title">Solicite um Orçamento</h2>
+<h2 class="title">Solicite um orçamento</h2>
 
 <div class="form-box">
-<form action="mailto:contato.cytrom@gmail.com" method="post" enctype="text/plain">
+<form action="https://formsubmit.co/contato.cytrom@gmail.com" method="POST">
 
-<input type="text" placeholder="Nome" required>
-<input type="text" placeholder="Empresa" required>
-<input type="tel" placeholder="Telefone" required>
-<input type="email" placeholder="Email" required>
+<input type="text" name="nome" placeholder="Seu nome" required>
+<input type="text" name="empresa" placeholder="Empresa">
+<input type="tel" name="telefone" placeholder="Telefone" required>
+<input type="email" name="email" placeholder="Seu email" required>
 
-<select required>
-<option>Selecione o serviço</option>
+<select name="servico" required>
+<option>Escolha o serviço</option>
 <option>Gestão de TI</option>
 <option>Suporte Técnico</option>
 <option>Monitoramento</option>
@@ -360,28 +336,33 @@ Suporte, monitoramento, inventário, service desk e gestão inteligente para emp
 <option>Consultoria</option>
 </select>
 
-<input type="number" placeholder="Quantidade de máquinas">
-<textarea rows="5" placeholder="Descreva sua necessidade"></textarea>
+<textarea name="mensagem" rows="5" placeholder="Descreva sua necessidade"></textarea>
 
-<button type="submit">Solicitar Orçamento</button>
+<button type="submit">Enviar solicitação</button>
+
 </form>
 </div>
 </section>
 
-<footer id="contato">
-<p>📞 (11) 96275-3749</p>
-<p>✉ contato.cytrom@gmail.com</p>
-<p>📷 @cytrom_ti</p>
-<p>© 2026 Cytrom TI — Gestão e Suporte de TI</p>
+<footer>
+<h3>Conecte-se com a Cytrom</h3>
+
+<div class="socials">
+<a href="https://wa.me/5511962753749" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="https://www.instagram.com/cytrom_ti" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="#orcamento"><i class="fas fa-envelope"></i></a>
+</div>
+
+<p style="margin-top:20px;">© 2026 Cytrom TI</p>
 </footer>
 
 <script>
-const cards = document.querySelectorAll('.card');
+const cards=document.querySelectorAll('.card');
 
-window.addEventListener('scroll', () => {
-cards.forEach(card => {
-const top = card.getBoundingClientRect().top;
-if(top < window.innerHeight - 50){
+window.addEventListener('scroll',()=>{
+cards.forEach(card=>{
+const top=card.getBoundingClientRect().top;
+if(top<window.innerHeight-50){
 card.classList.add('show');
 }
 });
